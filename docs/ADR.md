@@ -75,7 +75,3 @@ Dokument opisuje kluczowe decyzje architektoniczne projektu **Habit Tracker**. K
 | **Trade-offy** | Komunikaty błędów Zod są strukturalne (lista issues), więc trzeba je sformatować przed zwróceniem klientowi. Dorzuca ~50KB do bundle'a (akceptowalne). |
 
 ---
-
-## Podsumowanie
-
-Wątek przewodni decyzji: **prostota i type safety end-to-end**. TypeScript po obu stronach + Zod + Prisma daje nam typy od bazy, przez API, po React. Wybieramy dojrzałe, dobrze udokumentowane technologie zamiast modnych, żeby maksymalnie obniżyć ryzyko utknięcia.
