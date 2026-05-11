@@ -19,6 +19,7 @@ interface Habit {
   description: string | null;
   category: Category;
   checkins: Checkin[];
+  currentStreak: number;
 }
 
 function todayIso(): string {
@@ -145,6 +146,23 @@ export function Habits() {
                   >
                     {habit.category.name}
                   </span>
+                  {habit.currentStreak > 0 && (
+                    <span
+                      title="Dni z rzędu"
+                      style={{
+                        background: '#fef3c7',
+                        color: '#92400e',
+                        padding: '2px 8px',
+                        borderRadius: 999,
+                        fontSize: '0.75rem',
+                        marginLeft: '0.5rem',
+                        fontWeight: 600,
+                      }}
+                    >
+                      🔥 {habit.currentStreak}{' '}
+                      {habit.currentStreak === 1 ? 'dzień' : 'dni'}
+                    </span>
+                  )}
                   {habit.description && (
                     <p style={{ margin: '0.25rem 0 0', color: '#6b7280' }}>
                       {habit.description}

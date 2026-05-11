@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { prisma } from '../lib/prisma';
+import { calculateStreak } from '../lib/streak';
 import { requireAuth } from '../middleware/auth';
 import {
   createCheckinSchema,
@@ -18,7 +19,11 @@ habitsRouter.get('/', async (req, res, next) => {
       include: { category: true, checkins: { orderBy: { date: 'desc' }, take: 30 } },
       orderBy: { createdAt: 'desc' },
     });
-    res.json(habits);
+    const withStreak = habits.map((h) => ({
+      ...h,
+      currentStreak: calculateStreak(h.checkins.map((c) => c.date)),
+    }));
+    res.json(withStreak);
   } catch (e) {
     next(e);
   }
