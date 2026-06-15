@@ -18,7 +18,7 @@ Aplikacja webowa do budowania i śledzenia codziennych nawyków. Użytkownik two
 
 - Rejestracja i logowanie użytkownika.
 - Tworzenie nawyków przypisanych do kategorii (np. Zdrowie, Nauka, Produktywność).
-- Codzienne odznaczanie wykonania nawyku (check-in).
+- Codzienne odznaczanie wykonania nawyku.
 - Widok historii — które dni były odhaczone.
 
 ## Architektura
@@ -132,7 +132,7 @@ docker compose down -v
 │       ├── auth/     # Kontekst autentykacji
 │       └── pages/    # Komponenty stron
 ├── docs/
-│   └── ADR.md        # Architecture Decision Record (obowiązkowy)
+│   └── ADR.md        # Architecture Decision Record
 ├── docker-compose.yml
 ├── .env.example
 └── README.md
