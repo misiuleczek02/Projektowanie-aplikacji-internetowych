@@ -88,20 +88,15 @@ docker compose up --build
 
 Pierwsze uruchomienie potrwa kilka minut (pobieranie obrazów + instalacja zależności). Kolejne będą szybsze.
 
+Backend przy starcie automatycznie stosuje migracje (`prisma migrate deploy`) i wypełnia bazę danymi demo (`npm run seed`), więc ta jedna komenda podnosi w pełni działającą aplikację — nie trzeba żadnych dodatkowych kroków.
+
 ### 4. Otwórz aplikację
 
 - Frontend: http://localhost:5173
 - API: http://localhost:4000
 - Health-check: http://localhost:4000/health
 
-### 5. Migracje i dane testowe (po pierwszym uruchomieniu)
-
-W osobnym terminalu:
-
-```bash
-docker compose exec backend npx prisma migrate dev
-docker compose exec backend npm run seed
-```
+Konto demo (utworzone przez seed): `demo@example.com` / `demo1234`.
 
 ### Zatrzymanie
 

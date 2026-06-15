@@ -31,7 +31,11 @@ async function main() {
   const zdrowie = await prisma.category.findUnique({ where: { name: 'Zdrowie' } });
   const nauka = await prisma.category.findUnique({ where: { name: 'Nauka' } });
 
-  if (zdrowie && nauka) {
+  // Idempotentnie: tworzymy przykładowe nawyki tylko gdy demo user ich nie ma,
+  // dzięki czemu seed można bezpiecznie uruchamiać przy każdym starcie kontenera.
+  const existingHabits = await prisma.habit.count({ where: { userId: demoUser.id } });
+
+  if (zdrowie && nauka && existingHabits === 0) {
     await prisma.habit.create({
       data: {
         name: 'Wypij 2L wody',

@@ -37,6 +37,9 @@ services:
     volumes:
       - ./backend/src:/app/src
       - ./backend/prisma:/app/prisma
+    # Migracje i seed odpalają się automatycznie przy starcie, więc
+    # `docker compose up` podnosi w pełni działającą aplikację jedną komendą (R5).
+    command: sh -c "npx prisma migrate deploy && npm run seed && npm run dev"
 
   frontend:
     build:
